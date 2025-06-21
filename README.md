@@ -1,16 +1,17 @@
-### Hi there 👋
-
-<!--
-**sho11decade/sho11decade** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<p align="left">
+  <a href="https://github.com/sho11decade/sho11decade/">
+    <img src="https://komarev.com/ghpvc/?username=sho11decade" alt="RiceZero" />
+  </a>
+  <a href="http://x.com/sho11decade">
+    <img height="20" src="https://img.shields.io/twitter/follow/sho11decade?label=Twitter&logo=twitter&style=flat" />
+  </a>
+    <a href="https://github.com/sho11decade">
+    <img height="20" src="https://img.shields.io/github/followers/sho11decade?label=follow&logo=github&style=flat" />
+  </a>
+  <a href="http://qiita.com/source21">
+    <img height="20" src="https://qiita-badge.apiapi.app/s/source21/posts.svg" />
+  </a>
+  <//qiita.com/yutkat">
+    <img height="20" src="https://qiita-badge.apiapi.app/s/source21/contributions.svg" />
+  </a>
+</p>
