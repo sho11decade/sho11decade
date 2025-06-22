@@ -1,0 +1,230 @@
+body {
+    text-align: center;
+}
+/* タイトルバーの装飾 */
+header {
+    background: linear-gradient(90deg, #4e54c8 0%, #8ffbe9 100%);
+    color: #fff;
+    padding: 32px 0 16px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100px;
+}
+
+header h1 {
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    display: block;
+}
+
+header h1 a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+header h1 a:hover {
+    opacity: 0.8;
+}
+
+header h2 {
+    margin: 8px 0 0 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0 32px;
+    height: 100px;
+}
+
+/*メニューバーの装飾 */
+
+/* ハンバーガーメニューの基本スタイル */
+.menu-bar {
+    position: absolute;
+    right: 32px;
+    top: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.hamburger {
+    width: 48px;
+    height: 200px; /* 後述のheader高さと合わせる */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    background: transparent;
+}
+
+.hamburger .bar {
+    width: 30px;
+    height: 4px;
+    background: #fff;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* メニュー本体 */
+.menu {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 220px; /* 少し広げると押しやすい */
+    min-height: 260px; /* 展開時のli高さ合計より大きく */
+    pointer-events: none;
+    z-index: 100;
+    /* overflow: visible; ←念のため追加してもOK */
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    height: 0;
+}
+
+.menu li {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.8);
+    transition: 
+        top 0.4s cubic-bezier(.68,-0.55,.27,1.55),
+        opacity 0.3s,
+        transform 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* メニューアイテムの視認性向上 */
+.menu li a {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.96); /* 半透明で浮かせる */
+    color: #2d357a;
+    padding: 12px 28px;
+    border-radius: 28px;
+    box-shadow: 0 4px 16px rgba(78,84,200,0.18), 0 1.5px 6px rgba(0,0,0,0.10);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.08rem;
+    letter-spacing: 0.04em;
+    border: 2px solid #8ffbe9;
+    transition: 
+        background 0.2s, 
+        color 0.2s,
+        border 0.2s,
+        box-shadow 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.menu li a:hover, .menu li a:focus {
+    background: #4e54c8;
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 6px 24px rgba(78,84,200,0.25), 0 2px 8px rgba(0,0,0,0.12);
+    outline: none;
+}
+
+
+/* 扇形メニュー展開時のli位置指定（全て必要です） */
+.menu.open li {
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+    min-height: 56px; /* クリック領域を拡大 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, 0) scale(1);
+}
+
+.menu.open li:nth-child(1) {
+    top: 0px;
+    transform: translate(-50%, 0) scale(1) rotate(-15deg);
+}
+.menu.open li:nth-child(2) {
+    top: 70px;
+    transform: translate(-50%, 0) scale(1) rotate(-5deg);
+}
+.menu.open li:nth-child(3) {
+    top: 140px;
+    transform: translate(-50%, 0) scale(1) rotate(5deg);
+}
+.menu.open li:nth-child(4) {
+    top: 200px;
+    transform: translate(-50%, 0) scale(1) rotate(15deg);
+}
+
+/* ulの高さを展開時に十分確保 */
+.menu.open ul {
+    height: 260px;
+    min-height: 260px;
+    pointer-events: auto;
+    z-index: 2;
+}
+
+/* メニューリストを前面に */
+.menu ul, .menu li {
+    position: relative;
+    z-index: 2;
+}
+
+/* メニュー項目ごとに形に合わせた個別の影を追加 */
+.menu.open li::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 8px;
+    bottom: 8px;
+    border-radius: 28px;
+    z-index: -1;
+    pointer-events: none;
+    box-shadow:
+        0 6px 18px 0 rgba(152, 156, 193, 0.18),
+        0 1.5px 6px 0 rgba(0,0,0,0.10);
+    opacity: 0.7;
+    transition: box-shadow 0.2s, opacity 0.2s;
+}
+
+/* ホバー時は影を強調 */
+.menu.open li:hover::after,
+.menu.open li:focus-within::after {
+    box-shadow:
+        0 12px 32px 0 rgba(46,54,120,0.22),
+        0 2px 8px 0 rgba(0,0,0,0.14);
+    opacity: 1;
+}
