@@ -5,33 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RiceZero 「オモシロイ」を「形」に、「笑顔」に</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </head>
 
 <body>
+    <!-- 背景の雲 -->
+    <div class="clouds-container">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
+        <div class="cloud cloud-5"></div>    </div>
     <header>
-        <div class="header-row">
-            <h1><a href="/index.html">RiceZero</a></h1>
-            <div class="menu-bar">
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-                <nav class="menu">
+        <div class="header-container">
+            <nav>
+                <ul class="nav-header">
+                    <li>
+                        <h1>RiceZero</h1>
+                    </li>
+                    <li>
+                        <h2>「オモシロイ」を「形」に、「笑顔」に</h2>
+                    </li>
+                </ul>
+                <div class="nav-links">
+                    <!-- ハンバーガーメニューボタン -->
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
                     <ul>
-                        <li><a href="/index.html">ホーム</a></li>
-                        <li><a href="/about.html">私たちについて</a></li>
-                        <li><a href="/services.html">サービス</a></li>
-                        <li><a href="/contact.html">お問い合わせ</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skill">Skill</a></li>
+                        <li><a href="#works">Works</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
-        <h2>「オモシロイ」を「形」に、「笑顔」に</h2>
     </header>
+    <!-- メニュー展開時の背景オーバーレイ -->
+    <div class="menu-overlay"></div>
+    <div class="main-content">
+        <h2 class="about" id="about">About</h2>
+        <p class="about-text">
+            Pythonが大好きな学生です。<br>
+            オモシロイを形にそして、人々を笑顔にすることを目標に日々ガラクタを創っています。
+        </p>
+        <h2 class="skill" id="skill">Skill</h2>
+        <h2 class="works" id="works">Works</h2>
+        <h2 class="contact" id="contact">Contact</h2>
+    </div>
 </body>
 
 </html>
