@@ -10,17 +10,20 @@
     <script src="./script.js"></script>
 </head>
 
-<body>
-    <!-- 背景の雲 -->
+<body>    <!-- 背景の雲 -->
     <div class="clouds-container">
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
         <div class="cloud cloud-3"></div>
         <div class="cloud cloud-4"></div>
-        <div class="cloud cloud-5"></div>    </div>
-    <header>
+        <div class="cloud cloud-5"></div>
+        <!-- 夕焼け雲 -->
+        <div class="cloud-sunset cloud-sunset-1"></div>
+        <div class="cloud-sunset cloud-sunset-2"></div>
+        <div class="cloud-sunset cloud-sunset-3"></div>
+    </div><header>
         <div class="header-container">
-            <nav>
+            <nav role="navigation" aria-label="メインナビゲーション">
                 <ul class="nav-header">
                     <li>
                         <h1>RiceZero</h1>
@@ -31,33 +34,72 @@
                 </ul>
                 <div class="nav-links">
                     <!-- ハンバーガーメニューボタン -->
-                    <div class="hamburger">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skill">Skill</a></li>
-                        <li><a href="#works">Works</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                    <button class="hamburger" 
+                            aria-label="メニューを開く" 
+                            aria-expanded="false" 
+                            aria-controls="navigation-menu">
+                        <span class="bar" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                    </button>
+                    <ul id="navigation-menu" role="menu">
+                        <li role="none"><a href="#about" role="menuitem">About</a></li>
+                        <li role="none"><a href="#skill" role="menuitem">Skill</a></li>
+                        <li role="none"><a href="#works" role="menuitem">Works</a></li>
+                        <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
     <!-- メニュー展開時の背景オーバーレイ -->
-    <div class="menu-overlay"></div>
-    <div class="main-content">
-        <h2 class="about" id="about">About</h2>
-        <p class="about-text">
-            Pythonが大好きな学生です。<br>
-            オモシロイを形にそして、人々を笑顔にすることを目標に日々ガラクタを創っています。
-        </p>
-        <h2 class="skill" id="skill">Skill</h2>
-        <h2 class="works" id="works">Works</h2>
-        <h2 class="contact" id="contact">Contact</h2>
-    </div>
+    <div class="menu-overlay"></div>    <main class="main-content" role="main">
+        <section class="about" id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About</h2>
+            <p class="about-text">
+                Pythonが大好きな学生です。<br>
+                オモシロイを形にそして、世界を笑顔にすることを目標に日々ガラクタを創っています。
+            </p>
+        </section>
+        
+        <section class="skill" id="skill" aria-labelledby="skill-heading">
+            <h2 id="skill-heading">My Skills</h2>
+            <div class="skills-grid" role="list" aria-label="スキル一覧">
+                <div class="skill-card" role="listitem">
+                    <div class="skill-icon html" aria-hidden="true"></div>
+                    <h3>Pythonツール開発</h3>
+                    <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Pythonツール開発スキル: 90%">
+                        <div class="skill-level" style="width: 90%"></div>
+                    </div>
+                    <p>Python ツール開発</p>
+                </div>
+                <div class="skill-card" role="listitem">
+                    <div class="skill-icon css" aria-hidden="true"></div>
+                    <h3>CSS3</h3>
+                    <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3スキル: 85%">
+                        <div class="skill-level" style="width: 85%"></div>
+                    </div>
+                    <p>レスポンシブデザイン・アニメーション</p>
+                </div>
+                <div class="skill-card" role="listitem">
+                    <div class="skill-icon js" aria-hidden="true"></div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScriptスキル: 80%">
+                        <div class="skill-level" style="width: 80%"></div>
+                    </div>
+                    <p>動的UI・Webアプリ開発</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="works" id="works" aria-labelledby="works-heading">
+            <h2 id="works-heading">Works</h2>
+        </section>
+        
+        <section class="contact" id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact</h2>
+        </section>
+    </main>
 </body>
 
 </html>

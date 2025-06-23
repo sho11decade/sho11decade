@@ -1,8 +1,30 @@
 body {
     font-family: 'Quicksand', sans-serif;
-    background: linear-gradient(45deg, #f3d0c4, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd);
-    background-size: 400% 400%;
-    animation: gradientShift 16s ease infinite;
+    background: 
+        radial-gradient(ellipse at top, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom left, rgba(173, 216, 230, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 218, 185, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, 
+            #ffd1dc 0%,
+            #e6e6fa 15%,
+            #f0f8ff 30%,
+            #ffe4e1 45%,
+            #e0ffff 60%,
+            #f5deb3 75%,
+            #dda0dd 85%,
+            #b0c4de 100%
+        );
+    background-size: 
+        800px 600px,
+        600px 800px,
+        700px 500px,
+        100% 100%;
+    background-position:
+        -400px -300px,
+        calc(100% + 300px) calc(100% + 400px),
+        calc(100% + 350px) calc(100% + 250px),
+        0 0;
+    animation: pastelShift 30s ease-in-out infinite;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -10,17 +32,34 @@ body {
     padding: 0;
 }
 
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
+@keyframes pastelShift {
+    0%, 100% {
+        background-position:
+            -400px -300px,
+            calc(100% + 300px) calc(100% + 400px),
+            calc(100% + 350px) calc(100% + 250px),
+            0 0;
     }
-
+    25% {
+        background-position:
+            -200px -100px,
+            calc(100% + 100px) calc(100% + 200px),
+            calc(100% + 150px) calc(100% + 50px),
+            0 0;
+    }
     50% {
-        background-position: 100% 50%;
+        background-position:
+            0px 100px,
+            calc(100% - 100px) calc(100% - 100px),
+            calc(100% - 50px) calc(100% - 150px),
+            0 0;
     }
-
-    100% {
-        background-position: 0% 50%;
+    75% {
+        background-position:
+            -100px -50px,
+            calc(100% + 200px) calc(100% + 300px),
+            calc(100% + 250px) calc(100% + 100px),
+            0 0;
     }
 }
 
@@ -37,17 +76,19 @@ body {
 
 .cloud {
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50px;
-    opacity: 0.6;
+    opacity: 0.8;
+    filter: drop-shadow(0 2px 8px rgba(221, 160, 221, 0.3));
 }
 
 .cloud::before,
 .cloud::after {
     content: '';
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50px;
+    filter: drop-shadow(0 1px 4px rgba(173, 216, 230, 0.2));
 }
 
 .cloud-1 {
@@ -157,6 +198,116 @@ body {
 }
 
 
+/* パステル風のリアルな雲を追加 */
+.cloud-sunset {
+    position: absolute;
+    background: linear-gradient(45deg, 
+        rgba(255, 192, 203, 0.8) 0%, 
+        rgba(221, 160, 221, 0.7) 30%, 
+        rgba(255, 255, 255, 0.9) 60%,
+        rgba(173, 216, 230, 0.6) 100%);
+    border-radius: 60px;
+    filter: blur(1px) drop-shadow(0 4px 12px rgba(221, 160, 221, 0.4));
+    animation: float-cloud 40s infinite linear;
+}
+
+.cloud-sunset::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(60deg, 
+        rgba(255, 182, 193, 0.9) 0%, 
+        rgba(255, 255, 255, 0.8) 70%);
+    border-radius: 50px;
+    filter: blur(0.5px);
+}
+
+.cloud-sunset::after {
+    content: '';
+    position: absolute;
+    background: linear-gradient(-30deg, 
+        rgba(230, 230, 250, 0.7) 0%, 
+        rgba(255, 255, 255, 0.9) 50%);
+    border-radius: 40px;
+    filter: blur(0.8px);
+}
+
+/* 異なるサイズと位置の夕焼け雲を作成 */
+.cloud-sunset-1 {
+    width: 140px;
+    height: 60px;
+    top: 15%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.cloud-sunset-1::before {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    left: 20px;
+}
+
+.cloud-sunset-1::after {
+    width: 80px;
+    height: 50px;
+    top: -20px;
+    right: 15px;
+}
+
+.cloud-sunset-2 {
+    width: 100px;
+    height: 45px;
+    top: 25%;
+    left: 75%;
+    animation-delay: -15s;
+}
+
+.cloud-sunset-2::before {
+    width: 55px;
+    height: 55px;
+    top: -28px;
+    left: 12px;
+}
+
+.cloud-sunset-3 {
+    width: 160px;
+    height: 70px;
+    top: 55%;
+    left: 85%;
+    animation-delay: -25s;
+}
+
+.cloud-sunset-3::before {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    left: 25px;
+}
+
+.cloud-sunset-3::after {
+    width: 60px;
+    height: 40px;
+    top: -15px;
+    right: 20px;
+}
+
+@keyframes float-cloud {
+    0% {
+        transform: translateX(-200px) translateY(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(calc(100vw + 200px)) translateY(-20px);
+        opacity: 0;
+    }
+}
+
 /* ハンバーガーメニューボタン */
 .hamburger {
     display: none;
@@ -167,6 +318,9 @@ body {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     transition: all 0.3s ease;
+    border: none;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .hamburger:hover {
@@ -412,8 +566,10 @@ ul {
     padding: 0;
     margin: 0;
 }
-
 li {
+    list-style: none;
+}
+.nav li {
     list-style: none;
     margin: 0;
 }
@@ -429,6 +585,7 @@ a {
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
+    animation: float-subtle 8s ease-in-out infinite;
 }
 
 a:first-child {
@@ -444,6 +601,7 @@ a:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation-play-state: paused;
 }
 
 
@@ -455,14 +613,39 @@ a:hover {
     padding: 1.5rem 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin-bottom: 24px;
+    animation: float-gentle 10s ease-in-out infinite;
 }
 
-/* navの高さ分だけアンカー位置を下げる */
+/* CSSスムーズスクロールの追加 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* アンカーリンクのオフセット調整 */
 .about,
 .skill,
 .works,
 .contact {
+  scroll-margin-top: 100px;
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .about,
+  .skill,
+  .works,
+  .contact {
+    scroll-margin-top: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about,
+  .skill,
+  .works,
+  .contact {
     scroll-margin-top: 80px;
+  }
 }
 
 /* ===== タブレット・PC向けレイアウト調整 ===== */
@@ -558,4 +741,295 @@ a:hover {
     .contact {
         scroll-margin-top: 60px;
     }
+}
+
+/* セクション間の適切なスペースを確保 */
+section {
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+}
+
+section h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  section {
+    margin-bottom: 2rem;
+    padding-top: 0.5rem;
+  }
+  
+  section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* About セクションのスタイル */
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* スキルカードのグリッドレイアウト */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: float-gentle 15s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .skill-card {
+    width: 100%;
+  }
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  padding: 1.5em 1.2em;
+  width: 240px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: float-medium 12s ease-in-out infinite;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02) rotate(1deg);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation-play-state: paused;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+.skill-icon {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 1em auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+}
+
+.skill-icon.css { background: #264de4; }
+.skill-icon.css::after { content: "{ }"; color: #fff; font-size: 1.7em;}
+
+.skill-card h2 {
+  font-size: 1.25em;
+  margin-bottom: 0.6em;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.skill-bar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 7px;
+  width: 100%;
+  height: 10px;
+  margin-bottom: 0.7em;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.skill-level {
+  background: linear-gradient(90deg, #ffb6c1 0%, #dda0dd 100%);
+  height: 100%;
+  border-radius: 7px 0 0 7px;
+  transition: width 1.2s cubic-bezier(.95,.05,.8,.04);
+}
+
+.skill-card p {
+  font-size: 0.97em;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0.5em 0 0 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* 浮遊感のあるアニメーション（控えめに調整） */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(0.3deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(-0.3deg);
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-1px) translateX(0.5px);
+  }
+  66% {
+    transform: translateY(-0.5px) translateX(-0.5px);
+  }
+}
+
+/* ナビゲーションに微細な浮遊感 */
+nav {
+  animation: float-subtle 16s ease-in-out infinite;
+}
+
+/* アクセシビリティの改善 */
+
+/* 動作を制限するユーザーへの配慮 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* コントラスト改善 */
+.skill-card h2 {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.skill-card p {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* フォーカス管理の改善 */
+a:focus,
+.hamburger:focus {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* キーボードナビゲーション改善 */
+.hamburger:focus-visible {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+}
+
+/* スクリーンリーダー対応 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ARIAラベル用のスタイル */
+[aria-expanded="true"] .hamburger .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+[aria-expanded="true"] .hamburger .bar:nth-child(2) {
+  opacity: 0;
+}
+
+[aria-expanded="true"] .hamburger .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* より大きなクリック/タップエリア */
+@media (max-width: 768px) {
+  .nav-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 24px;
+    border-radius: 0;
+    background: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+  }
 }
