@@ -1,30 +1,28 @@
 body {
     font-family: 'Quicksand', sans-serif;
     background: 
-        radial-gradient(ellipse at top, rgba(255, 182, 193, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom left, rgba(173, 216, 230, 0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(255, 218, 185, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at top, rgba(230, 240, 250, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom left, rgba(240, 248, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at bottom right, rgba(245, 245, 250, 0.1) 0%, transparent 60%),
         linear-gradient(135deg, 
-            #ffd1dc 0%,
-            #e6e6fa 15%,
-            #f0f8ff 30%,
-            #ffe4e1 45%,
-            #e0ffff 60%,
-            #f5deb3 75%,
-            #dda0dd 85%,
-            #b0c4de 100%
+            #f8f9fa 0%,
+            #f5f6f8 20%,
+            #f0f2f5 40%,
+            #ebeef2 60%,
+            #e6e9ef 80%,
+            #e1e5eb 100%
         );
     background-size: 
-        800px 600px,
-        600px 800px,
-        700px 500px,
+        1000px 800px,
+        800px 1000px,
+        900px 700px,
         100% 100%;
     background-position:
-        -400px -300px,
-        calc(100% + 300px) calc(100% + 400px),
-        calc(100% + 350px) calc(100% + 250px),
+        -500px -400px,
+        calc(100% + 400px) calc(100% + 500px),
+        calc(100% + 450px) calc(100% + 350px),
         0 0;
-    animation: pastelShift 30s ease-in-out infinite;
+    animation: subtleShift 60s ease-in-out infinite;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -32,33 +30,19 @@ body {
     padding: 0;
 }
 
-@keyframes pastelShift {
+@keyframes subtleShift {
     0%, 100% {
         background-position:
-            -400px -300px,
-            calc(100% + 300px) calc(100% + 400px),
-            calc(100% + 350px) calc(100% + 250px),
-            0 0;
-    }
-    25% {
-        background-position:
-            -200px -100px,
-            calc(100% + 100px) calc(100% + 200px),
-            calc(100% + 150px) calc(100% + 50px),
+            -500px -400px,
+            calc(100% + 400px) calc(100% + 500px),
+            calc(100% + 450px) calc(100% + 350px),
             0 0;
     }
     50% {
         background-position:
-            0px 100px,
-            calc(100% - 100px) calc(100% - 100px),
-            calc(100% - 50px) calc(100% - 150px),
-            0 0;
-    }
-    75% {
-        background-position:
-            -100px -50px,
-            calc(100% + 200px) calc(100% + 300px),
-            calc(100% + 250px) calc(100% + 100px),
+            -450px -350px,
+            calc(100% + 350px) calc(100% + 450px),
+            calc(100% + 400px) calc(100% + 300px),
             0 0;
     }
 }
@@ -76,19 +60,19 @@ body {
 
 .cloud {
     position: absolute;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 50px;
-    opacity: 0.8;
-    filter: drop-shadow(0 2px 8px rgba(221, 160, 221, 0.3));
+    opacity: 0.6;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
 }
 
 .cloud::before,
 .cloud::after {
     content: '';
     position: absolute;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 50px;
-    filter: drop-shadow(0 1px 4px rgba(173, 216, 230, 0.2));
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.05));
 }
 
 .cloud-1 {
@@ -96,7 +80,7 @@ body {
     height: 40px;
     top: 20%;
     left: 10%;
-    animation: float 20s infinite linear;
+    animation: float 30s infinite linear;
 }
 
 .cloud-1::before {
@@ -201,22 +185,16 @@ body {
 /* パステル風のリアルな雲を追加 */
 .cloud-sunset {
     position: absolute;
-    background: linear-gradient(45deg, 
-        rgba(255, 192, 203, 0.8) 0%, 
-        rgba(221, 160, 221, 0.7) 30%, 
-        rgba(255, 255, 255, 0.9) 60%,
-        rgba(173, 216, 230, 0.6) 100%);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 60px;
-    filter: blur(1px) drop-shadow(0 4px 12px rgba(221, 160, 221, 0.4));
+    filter: blur(1px) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
     animation: float-cloud 40s infinite linear;
 }
 
 .cloud-sunset::before {
     content: '';
     position: absolute;
-    background: linear-gradient(60deg, 
-        rgba(255, 182, 193, 0.9) 0%, 
-        rgba(255, 255, 255, 0.8) 70%);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50px;
     filter: blur(0.5px);
 }
@@ -224,9 +202,7 @@ body {
 .cloud-sunset::after {
     content: '';
     position: absolute;
-    background: linear-gradient(-30deg, 
-        rgba(230, 230, 250, 0.7) 0%, 
-        rgba(255, 255, 255, 0.9) 50%);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 40px;
     filter: blur(0.8px);
 }
@@ -841,7 +817,7 @@ section h2 {
 }
 
 .skill-card:hover {
-  transform: translateY(-8px) scale(1.02) rotate(1deg);
+  transform: translateY(-8px) scale(1.02);
   background: rgba(255, 255, 255, 0.25);
   border-color: rgba(255, 255, 255, 0.4);
   box-shadow: 
@@ -888,10 +864,10 @@ section h2 {
 }
 
 .skill-level {
-  background: linear-gradient(90deg, #ffb6c1 0%, #dda0dd 100%);
-  height: 100%;
-  border-radius: 7px 0 0 7px;
-  transition: width 1.2s cubic-bezier(.95,.05,.8,.04);
+    background: linear-gradient(90deg, #6c757d 0%, #495057 100%);
+    height: 100%;
+    border-radius: 7px 0 0 7px;
+    transition: width 1.2s cubic-bezier(.95,.05,.8,.04);
 }
 
 .skill-card p {
@@ -907,34 +883,31 @@ section h2 {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
   }
 }
 
 @keyframes float-medium {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
   }
   25% {
-    transform: translateY(-2px) rotate(0.3deg);
+    transform: translateY(-1px);
   }
   50% {
-    transform: translateY(-4px) rotate(0deg);
+    transform: translateY(-2px);
   }
   75% {
-    transform: translateY(-2px) rotate(-0.3deg);
+    transform: translateY(-1px);
   }
 }
 
 @keyframes float-subtle {
   0%, 100% {
-    transform: translateY(0px) translateX(0px);
+    transform: translateY(0px);
   }
-  33% {
-    transform: translateY(-1px) translateX(0.5px);
-  }
-  66% {
-    transform: translateY(-0.5px) translateX(-0.5px);
+  50% {
+    transform: translateY(-1px);
   }
 }
 
