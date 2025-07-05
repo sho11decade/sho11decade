@@ -181,3 +181,92 @@ $(function() {
     $('.hamburger').attr('aria-label', 'メニューを開く');
   }
 });
+
+// contactセクションの整列機能
+$(function() {
+  // contactリンクの高さを揃える
+  function alignContactLinks() {
+    const contactLinks = $('.contact-link');
+    
+    if (contactLinks.length > 0) {
+      // 全てのリンクの高さをリセット
+      contactLinks.css('height', 'auto');
+      
+      // 最大の高さを取得
+      let maxHeight = 0;
+      contactLinks.each(function() {
+        const currentHeight = $(this).outerHeight();
+        if (currentHeight > maxHeight) {
+          maxHeight = currentHeight;
+        }
+      });
+      
+      // 全てのリンクに最大高さを適用（PC画面のみ）
+      if ($(window).width() >= 769) {
+        contactLinks.css('height', maxHeight + 'px');
+      }
+    }
+  }
+  
+  // contactアイコンと文字の配置を調整
+  function alignContactContent() {
+    $('.contact-link').each(function() {
+      const $link = $(this);
+      const $icon = $link.find('.contact-icon');
+      const $text = $link.find('span');
+      
+      // PC画面で中央揃えに調整
+      if ($(window).width() >= 769) {
+        $link.css({
+          'flex-direction': 'column',
+          'text-align': 'center',
+          'justify-content': 'center',
+          'align-items': 'center'
+        });
+        $icon.css('margin-right', '0');
+        $icon.css('margin-bottom', '0.5rem');
+      } else {
+        // モバイル画面で横並びに戻す
+        $link.css({
+          'flex-direction': 'row',
+          'text-align': 'left',
+          'justify-content': 'flex-start',
+          'align-items': 'center'
+        });
+        $icon.css('margin-right', '1rem');
+        $icon.css('margin-bottom', '0');
+      }
+    });
+  }
+  
+  // 初回実行
+  setTimeout(function() {
+    alignContactContent();
+    alignContactLinks();
+  }, 100);
+  
+  // リサイズ時に再実行
+  $(window).on('resize', function() {
+    clearTimeout(window.contactResizeTimer);
+    window.contactResizeTimer = setTimeout(function() {
+      alignContactContent();
+      alignContactLinks();
+    }, 250);
+  });
+  
+  // contactリンクにホバー時の3D効果を追加
+  $('.contact-link').hover(
+    function() {
+      $(this).css({
+        'transform': 'translateY(-3px) scale(1.02)',
+        'transition': 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+      });
+    },
+    function() {
+      $(this).css({
+        'transform': 'translateY(0) scale(1)',
+        'transition': 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+      });
+    }
+  );
+});

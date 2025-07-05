@@ -1,33 +1,21 @@
 body {
-    font-family: 'Quicksand', sans-serif;
-    background: 
-        radial-gradient(ellipse at top, rgba(230, 240, 250, 0.2) 0%, transparent 60%),
-        radial-gradient(ellipse at bottom left, rgba(240, 248, 255, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at bottom right, rgba(245, 245, 250, 0.1) 0%, transparent 60%),
-        linear-gradient(135deg, 
-            #f8f9fa 0%,
-            #f5f6f8 20%,
-            #f0f2f5 40%,
-            #ebeef2 60%,
-            #e6e9ef 80%,
-            #e1e5eb 100%
-        );
-    background-size: 
-        1000px 800px,
-        800px 1000px,
-        900px 700px,
-        100% 100%;
-    background-position:
-        -500px -400px,
-        calc(100% + 400px) calc(100% + 500px),
-        calc(100% + 450px) calc(100% + 350px),
-        0 0;
-    animation: subtleShift 60s ease-in-out infinite;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, 
+        #f5f5f7 0%,
+        #ffffff 25%,
+        #f8f9fa 50%,
+        #ffffff 75%,
+        #f5f5f7 100%
+    );
+    background-attachment: fixed;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
     margin: 0;
     padding: 0;
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes subtleShift {
@@ -284,39 +272,37 @@ body {
     }
 }
 
-/* ハンバーガーメニューボタン */
+/* Appleスタイル ハンバーガーメニュー */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     padding: 8px;
     z-index: 1001;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
     border: none;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 32px;
+    min-height: 32px;
 }
 
 .hamburger:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.04);
 }
 
 .hamburger .bar {
-    width: 28px;
-    height: 4px;
-    background-color: #fff;
-    margin: 4px 0;
-    transition: 0.3s;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    width: 18px;
+    height: 1.5px;
+    background-color: #1d1d1f;
+    margin: 2px 0;
+    transition: 0.2s;
+    border-radius: 1px;
 }
 
 /* ハンバーガーアニメーション */
 .hamburger.active .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-4px, 4px);
 }
 
 .hamburger.active .bar:nth-child(2) {
@@ -324,39 +310,27 @@ body {
 }
 
 .hamburger.active .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-6px, -6px);
+    transform: rotate(45deg) translate(-4px, -4px);
 }
 
 /* スマホなど画面幅が狭い場合の調整 */
 @media (max-width: 768px) {
-
-    .cloud-1,
-    .cloud-2,
-    .cloud-3,
-    .cloud-4,
-    .cloud-5 {
-        width: 80%;
-        height: auto;
+    .hamburger {
+        display: flex;
     }
 
-    .hamburger {
-        backdrop-filter: blur(32px);
-        display: flex;
-    }    .nav-links ul {
+    .nav-links ul {
         position: absolute;
-        top: 56px;
+        top: 48px;
         right: 0;
-        /*background: rgba(78, 84, 200, 0.98);*/
-        backdrop-filter: blur(128px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: saturate(180%) blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
         flex-direction: column;
-        width: 280px;
+        width: 220px;
         max-width: 85vw;
-        box-shadow: 
-            0 8px 32px rgba(0, 0, 0, 0.15),
-            0 2px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 16px 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         display: none;
         z-index: 1000;
         transform: translateY(-10px);
@@ -374,48 +348,38 @@ body {
         width: 100%;
         text-align: center;
         margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links li:first-child {
+        margin-top: 8px;
     }
 
     .nav-links li:last-child {
-        border-bottom: none;
+        margin-bottom: 8px;
     }
 
     .nav-links a {
         margin: 0;
-        padding: 18px 24px;
-        border-radius: 0;
+        padding: 12px 20px;
+        border-radius: 8px;
         background: transparent;
         width: 100%;
         display: block;
         box-sizing: border-box;
-        font-size: 1.1rem;
-        font-weight: 500;
-        letter-spacing: 0.5px;
+        font-size: 1rem;
+        font-weight: 400;
+        color: #1d1d1f;
         position: relative;
-        transition: all 0.3s ease;
-    }
-
-    .nav-links a::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 0;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-        transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::before {
-        width: 100%;
+        transition: all 0.2s ease;
+        margin: 2px 12px;
+        width: calc(100% - 24px);
     }
 
     .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.15);
-        color: #fff;
-        transform: translateX(8px);
-        box-shadow: inset 4px 0 0 rgba(255, 255, 255, 0.4);
+        background: rgba(0, 0, 0, 0.04);
+        color: #1d1d1f;
+        transform: none;
+        box-shadow: none;
     }
 }
 
@@ -426,7 +390,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
     z-index: 999;
@@ -489,22 +453,24 @@ body {
     }
 }
 
-/* モバイルファースト ナビゲーション */
+/* Appleスタイル ナビゲーション */
 nav {
-    color: white;
+    color: #1d1d1f;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
     display: flex;
     width: 100vw;
-    height: 56px;
+    height: 48px;
     box-sizing: border-box;
-    backdrop-filter: blur(32px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 20px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .nav-header {
@@ -518,15 +484,18 @@ nav {
 
 .nav-header h1 {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: 600;
     line-height: 1.2;
+    color: #1d1d1f;
 }
 
 .nav-header h2 {
     margin: 0;
-    font-size: 0.8rem;
-    font-weight: normal;
-    opacity: 0.9;
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.6;
+    color: #6e6e73;
 }
 
 .nav-links {
@@ -553,15 +522,14 @@ li {
 a {
     display: block;
     text-decoration: none;
-    color: white;
-    margin: 0 12px;
+    color: #1d1d1f;
+    margin: 0 16px;
     font-size: 0.9rem;
-    padding: 10px 16px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    animation: float-subtle 8s ease-in-out infinite;
+    font-weight: 400;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: transparent;
 }
 
 a:first-child {
@@ -573,23 +541,25 @@ a:last-child {
 }
 
 a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    animation-play-state: paused;
+    color: #1d1d1f;
+    background: rgba(0, 0, 0, 0.04);
+    transform: none;
+    box-shadow: none;
 }
 
 
 .main-content {
-    margin-top: 72px;
+    margin-top: 68px;
     /* モバイル用：navの高さ分のマージン */
-    backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    color: #1d1d1f;
+    padding: 2rem 1.5rem;
     margin-bottom: 24px;
-    animation: float-gentle 10s ease-in-out infinite;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 /* CSSスムーズスクロールの追加 */
@@ -631,8 +601,8 @@ html {
     }
 
     nav {
-        height: 70px;
-        padding: 5px 32px 0 32px;
+        height: 56px;
+        padding: 0 32px;
     }
 
     .nav-header {
@@ -640,11 +610,11 @@ html {
     }
 
     .nav-header h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 
     .nav-header h2 {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .nav-links {
@@ -661,34 +631,38 @@ html {
         border-radius: 0;
         transform: none;
         opacity: 1;
+        border: none;
+        backdrop-filter: none;
     }
 
     a {
-        margin: 0 24px;
-        font-size: 1rem;
-        padding: 12px 20px;
-        border-radius: 10px;
+        margin: 0 20px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 6px;
     }
 
     .main-content {
-        margin-top: 100px;
-        padding: 2rem 2rem;
+        margin-top: 76px;
+        padding: 3rem 2rem;
         margin-bottom: 32px;
+        margin-left: 32px;
+        margin-right: 32px;
     }
 
     .about,
     .skill,
     .works,
     .contact {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 76px;
     }
 }
 
 /* ===== 小型スマホ向け調整 ===== */
 @media (max-width: 480px) {
     nav {
-        height: 50px;
-        padding: 0 8px;
+        height: 44px;
+        padding: 0 16px;
     }
 
     .nav-header h1 {
@@ -699,16 +673,12 @@ html {
         font-size: 0.7rem;
     }
 
-    a {
-        margin: 0 8px;
-        font-size: 0.8rem;
-        padding: 8px 12px;
-    }
-
     .main-content {
         margin-top: 60px;
-        padding: 1rem 0.5rem;
+        padding: 1.5rem 1rem;
         margin-bottom: 16px;
+        margin-left: 12px;
+        margin-right: 12px;
     }
 
     .about,
@@ -746,10 +716,27 @@ section h2 {
 
 /* About セクションのスタイル */
 .about-text {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #1d1d1f;
+    font-weight: 400;
+}
+
+/* セクション見出しスタイル */
+section h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* スキルカードのグリッドレイアウト */
@@ -783,52 +770,44 @@ section h2 {
 }
 
 .skill-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 18px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.1),
-    0 4px 16px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  padding: 1.5em 1.2em;
-  width: 240px;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  animation: float-medium 12s ease-in-out infinite;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 1.5em 1.2em;
+    width: 240px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: left 0.5s;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
 }
 
 .skill-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    0 8px 24px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  animation-play-state: paused;
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .skill-card:hover::before {
-  left: 100%;
+    left: 100%;
 }
 
 .skill-icon {
@@ -846,35 +825,32 @@ section h2 {
 .skill-icon.css::after { content: "{ }"; color: #fff; font-size: 1.7em;}
 
 .skill-card h2 {
-  font-size: 1.25em;
-  margin-bottom: 0.6em;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.25em;
+    margin-bottom: 0.6em;
+    font-weight: 600;
+    color: #1d1d1f;
 }
 
 .skill-bar {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 7px;
-  width: 100%;
-  height: 10px;
-  margin-bottom: 0.7em;
-  overflow: hidden;
-  backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    width: 100%;
+    height: 6px;
+    margin-bottom: 0.7em;
+    overflow: hidden;
 }
 
 .skill-level {
-    background: linear-gradient(90deg, #6c757d 0%, #495057 100%);
+    background: linear-gradient(90deg, #007AFF 0%, #5AC8FA 100%);
     height: 100%;
-    border-radius: 7px 0 0 7px;
+    border-radius: 4px;
     transition: width 1.2s cubic-bezier(.95,.05,.8,.04);
 }
 
 .skill-card p {
-  font-size: 0.97em;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0.5em 0 0 0;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    font-size: 0.9em;
+    color: #6e6e73;
+    margin: 0.5em 0 0 0;
 }
 
 /* 浮遊感のあるアニメーション（控えめに調整） */
@@ -920,39 +896,26 @@ nav {
 
 /* 動作を制限するユーザーへの配慮 */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* コントラスト改善 */
-.skill-card h2 {
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.skill-card p {
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 
 /* フォーカス管理の改善 */
 a:focus,
 .hamburger:focus {
-  outline: 3px solid #ffff00;
-  outline-offset: 2px;
-  background: rgba(255, 255, 255, 0.3);
+    outline: 2px solid #007AFF;
+    outline-offset: 2px;
 }
 
 /* キーボードナビゲーション改善 */
 .hamburger:focus-visible {
-  outline: 3px solid #ffff00;
-  outline-offset: 2px;
+    outline: 2px solid #007AFF;
+    outline-offset: 2px;
 }
 
 /* スクリーンリーダー対応 */
@@ -1005,4 +968,275 @@ a:focus,
     min-height: 44px;
     padding: 8px;
   }
+}
+
+/* Contact セクションのスタイル */
+.contact-description {
+    text-align: center;
+    font-size: 1rem;
+    color: #6e6e73;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    min-height: 60px; /* モバイル向け最小高さ */
+}
+
+.contact-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
+    z-index: 1;
+}
+
+.contact-link:hover::before {
+    left: 100%;
+}
+
+.contact-link:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    color: #1d1d1f;
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* アイコンサイズ固定 */
+}
+
+/* X (Twitter) のスタイル */
+.x-link:hover .x-icon {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* GitHub のスタイル */
+.github-link:hover .github-icon {
+    background: #333333;
+    color: #ffffff;
+}
+
+/* Qiita のスタイル */
+.qiita-link:hover .qiita-icon {
+    background: #55C500;
+    color: #ffffff;
+}
+
+.qiita-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Email のスタイル */
+.email-link:hover .email-icon {
+    background: #007AFF;
+    color: #ffffff;
+}
+
+/* Googleフォームのスタイル */
+.form-link:hover .form-icon {
+    background: #4285f4;
+    color: #ffffff;
+}
+
+/* PC向けレイアウト */
+@media (min-width: 769px) {
+    .contact-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        max-width: 1200px;
+        flex-wrap: wrap;
+        align-items: stretch; /* 高さを揃える */
+    }
+    
+    .contact-link {
+        flex: 1;
+        max-width: 200px;
+        min-width: 180px;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 120px; /* PC向け最小高さ */
+        padding: 1.5rem 1rem;
+    }
+    
+    .contact-link:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15),
+                    0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0.75rem;
+        width: 48px;
+        height: 48px;
+    }
+    
+    .contact-link span {
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        line-height: 1.2;
+    }
+}
+
+/* 小型スマホ向け調整 */
+@media (max-width: 480px) {
+    .contact-description {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .contact-links {
+        gap: 0.875rem;
+        padding: 0.5rem 0;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .contact-link {
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+        min-height: 64px;
+        border-radius: 14px;
+        margin: 0 0.5rem;
+    }
+    
+    .contact-icon {
+        width: 38px;
+        height: 38px;
+        margin-right: 1rem;
+    }
+    
+    .contact-link span {
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* 中型スマホ向け調整 */
+@media (min-width: 481px) and (max-width: 600px) {
+    .contact-links {
+        gap: 1rem;
+        max-width: 95%;
+    }
+    
+    .contact-link {
+        padding: 1.125rem 1.5rem;
+        font-size: 1rem;
+        min-height: 68px;
+        margin: 0 0.25rem;
+    }
+    
+    .contact-icon {
+        width: 42px;
+        height: 42px;
+        margin-right: 1.125rem;
+    }
+}
+
+/* タブレット向け調整 */
+@media (min-width: 481px) and (max-width: 768px) {
+    .contact-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        max-width: 600px;
+    }
+    
+    .contact-link {
+        flex: 1;
+        min-width: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
+        flex-direction: column;
+        text-align: center;
+        padding: 1.25rem 1rem;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 個別のcontactリンクのディレイアニメーション */
+.contact-link:nth-child(1) { animation-delay: 0.1s; }
+.contact-link:nth-child(2) { animation-delay: 0.2s; }
+.contact-link:nth-child(3) { animation-delay: 0.3s; }
+.contact-link:nth-child(4) { animation-delay: 0.4s; }
+.contact-link:nth-child(5) { animation-delay: 0.5s; }
+
+.contact-link {
+    animation: fadeInUp 0.6s ease-out both;
+    opacity: 0;
 }
