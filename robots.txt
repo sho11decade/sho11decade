@@ -1,0 +1,33 @@
+# robots.txt for RiceZero Portfolio Site
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://page.ricezero.fun/sitemap.xml
+
+# 優先的にクロールしてほしいページ
+Crawl-delay: 1
+
+# 画像フォルダ
+Allow: /images/
+
+# CSS・JS
+Allow: /style.css
+Allow: /script.js
+
+# 特定のボット向けの設定
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# 不要なファイルの除外
+Disallow: /*.log$
+Disallow: /*.tmp$
+Disallow: /temp/
+Disallow: /backup/

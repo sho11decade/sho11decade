@@ -270,3 +270,169 @@ $(function() {
     }
   );
 });
+
+// SNS共有機能
+function shareOnTwitter() {
+    const url = window.location.href;
+    const text = 'RiceZero Portfolio - 「オモシロイ」を「形」に、「笑顔」に';
+    const hashtags = 'ポートフォリオ,WebDesign,JavaScript,HTML,CSS';
+    const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}&hashtags=${encodeURIComponent(hashtags)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
+}
+
+function shareOnFacebook() {
+    const url = window.location.href;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    window.open(facebookUrl, '_blank', 'width=600,height=400');
+}
+
+function shareOnLinkedIn() {
+    const url = window.location.href;
+    const title = 'RiceZero Portfolio';
+    const summary = '「オモシロイ」を「形」に、「笑顔」に - クリエイティブなWebデザインとプログラミング';
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
+    window.open(linkedinUrl, '_blank', 'width=600,height=400');
+}
+
+function copyToClipboard() {
+    const url = window.location.href;
+    
+    // Clipboard API を使用（モダンブラウザ）
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+            showCopyNotification('URLをクリップボードにコピーしました！');
+        }).catch(function(err) {
+            console.error('クリップボードへのコピーに失敗しました:', err);
+            fallbackCopyToClipboard(url);
+        });
+    } else {
+        // フォールバック（古いブラウザ）
+        fallbackCopyToClipboard(url);
+    }
+}
+
+function fallbackCopyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopyNotification('URLをクリップボードにコピーしました！');
+    } catch (err) {
+        console.error('クリップボードへのコピーに失敗しました:', err);
+        showCopyNotification('URLのコピーに失敗しました。手動でコピーしてください。');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showCopyNotification(message) {
+    // 既存の通知があれば削除
+    const existingNotification = document.querySelector('.copy-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // 通知要素を作成
+    const notification = document.createElement('div');
+    notification.className = 'copy-notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(52, 199, 89, 0.95);
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        z-index: 10000;
+        box-shadow: 0 4px 20px rgba(52, 199, 89, 0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+        max-width: 300px;
+        word-wrap: break-word;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // フェードイン
+    setTimeout(() => {
+        notification.style.opacity = '1';
+        notification.style.transform = 'translateY(0)';
+    }, 100);
+    
+    // 3秒後にフェードアウト
+    setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// 共有ボタンにタッチフィードバック追加（モバイル対応）
+document.addEventListener('DOMContentLoaded', function() {
+    const shareButtons = document.querySelectorAll('.share-btn');
+    
+    shareButtons.forEach(button => {
+        // タッチ開始時
+        button.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(0.95)';
+            this.style.transition = 'transform 0.1s ease';
+        });
+        
+        // タッチ終了時
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            this.style.transform = 'scale(1)';
+            this.style.transition = 'transform 0.2s ease';
+            
+            // ボタンの種類に応じて適切な関数を呼び出し
+            setTimeout(() => {
+                if (this.classList.contains('twitter-share')) {
+                    shareOnTwitter();
+                } else if (this.classList.contains('facebook-share')) {
+                    shareOnFacebook();
+                } else if (this.classList.contains('linkedin-share')) {
+                    shareOnLinkedIn();
+                } else if (this.classList.contains('copy-link')) {
+                    copyToClipboard();
+                }
+            }, 100);
+        });
+        
+        // タッチキャンセル時
+        button.addEventListener('touchcancel', function() {
+            this.style.transform = 'scale(1)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+    });
+});
+
+// フッターの動的な更新日設定
+document.addEventListener('DOMContentLoaded', function() {
+    const lastUpdatedElement = document.querySelector('.last-updated time');
+    if (lastUpdatedElement) {
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = now.toLocaleDateString('ja-JP', options);
+        lastUpdatedElement.textContent = formattedDate;
+        lastUpdatedElement.setAttribute('datetime', now.toISOString().split('T')[0]);
+    }
+});
