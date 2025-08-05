@@ -5,6 +5,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Bitcount Prop Single", system-ui;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:
+        "slnt" 0,
+        "CRSV" 0.5,
+        "ELSH" 0,
+        "ELXP" 0;
 }
 
 html {
@@ -1202,15 +1211,15 @@ button:focus {
     .particles-container canvas {
         opacity: 0.4;
     }
-    
+
     .hero {
         background: linear-gradient(135deg, #0074D9 0%, #001122 100%);
     }
-    
+
     .hero-content {
         padding: 0 var(--spacing-sm);
     }
-    
+
     .hero-cta {
         padding: var(--spacing-sm) var(--spacing-md);
         font-size: var(--font-size-sm);
@@ -1221,19 +1230,20 @@ button:focus {
     .particles-container canvas {
         opacity: 0.3;
     }
-    
+
     .hero-cta {
         padding: var(--spacing-xs) var(--spacing-sm);
         font-size: var(--font-size-sm);
     }
-    
+
     .hero-scroll {
         bottom: var(--spacing-md);
     }
 }
 
 /* High DPI displays optimization */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
     .particles-container canvas {
         image-rendering: -webkit-optimize-contrast;
         image-rendering: crisp-edges;
