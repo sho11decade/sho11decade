@@ -7,6 +7,23 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+
 :root {
     /* CyberAgent Inspired Color Palette */
     --primary-color: #000000;
@@ -64,11 +81,24 @@ body {
     max-width: var(--container-max-width);
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
 }
 
 @media (max-width: 768px) {
     .container {
         padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 var(--spacing-xs);
     }
 }
 
@@ -341,6 +371,20 @@ section[id] {
     line-height: 1.1;
 }
 
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        line-height: 1.2;
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+    }
+}
+
 .hero-subtitle {
     font-size: var(--font-size-md);
     color: var(--text-secondary);
@@ -349,6 +393,21 @@ section[id] {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        margin-bottom: var(--spacing-md);
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-sm);
+    }
 }
 
 .hero-cta {
@@ -538,6 +597,30 @@ section[id] {
     .skill-category ul {
         grid-template-columns: 1fr;
     }
+    
+    .about {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .about-text h3 {
+        font-size: var(--font-size-base);
+        line-height: 1.4;
+    }
+    
+    .highlight-item {
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .about-text h4 {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
 }
 
 /* Works Section */
@@ -683,10 +766,42 @@ section[id] {
 @media (max-width: 768px) {
     .works-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
     
     .work-card.featured {
         grid-template-columns: 1fr;
+    }
+    
+    .works {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .work-content {
+        padding: var(--spacing-md);
+    }
+    
+    .work-content h3 {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .works {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .works-grid {
+        gap: var(--spacing-sm);
+    }
+    
+    .work-content {
+        padding: var(--spacing-sm);
+    }
+    
+    .work-overlay {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -1051,4 +1166,60 @@ button:focus {
 /* Remove old cloud animations and Apple-style elements */
 .clouds-container {
     display: none;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    /* Prevent horizontal scroll */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Improve touch targets */
+    .nav-link,
+    .hero-cta,
+    .work-btn,
+    .contact-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Better readability */
+    .section-header h2 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+    
+    .section-description {
+        font-size: clamp(0.9rem, 3vw, 1.125rem);
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 375px) {
+    .hero {
+        padding: calc(64px + var(--spacing-lg)) 0 var(--spacing-lg);
+    }
+    
+    .section-header {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .contact-method {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Landscape orientation fixes */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: 70vh;
+        padding: calc(64px + var(--spacing-md)) 0 var(--spacing-md);
+    }
+    
+    .hero-scroll {
+        display: none;
+    }
 }
