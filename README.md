@@ -5,7 +5,7 @@
   
   <!-- Profile Views and Followers -->
   <p>
-    <a href="https://github.com/sho11decade/sho11decade/">
+    <a href="https://github.com/sho11decade/">
       <img src="https://komarev.com/ghpvc/?username=sho11decade&color=blueviolet&style=for-the-badge" alt="Profile Views" />
     </a>
     <a href="https://github.com/sho11decade">
