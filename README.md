@@ -20,18 +20,6 @@
 
 ---
 
-## 🚀 About Me
-
-> *"Building tomorrow's solutions with today's technology"*
-
-- 🔭 I'm currently working on **innovative AI-powered applications**
-- 🌱 I'm learning **advanced machine learning and cloud technologies**
-- 👯 I'm looking to collaborate on **open source projects**
-- 💬 Ask me about **web development, AI, and emerging technologies**
-- ⚡ Fun fact: **I believe technology should enhance human connection, not replace it**
-
----
-
 ## 🛠️ Tech Stack
 
 <div align="center">
@@ -42,19 +30,8 @@
 ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-### Frameworks & LibrarieslogoColor=white)
-![Node.js](https://img.shields.io/badge/-Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/-Express-000000?style=for-the-badge&logo=express&logoColor=white)
-
-### Databases & Cloud
-![AWS](https://img.shields.io/badge/-AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-
-### Tools & Others
 ![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
-![Figma](https://img.shields.io/badge/-Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-
 </div>
 
 ---
