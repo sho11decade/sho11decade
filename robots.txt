@@ -2,6 +2,20 @@
 
 User-agent: *
 Allow: /
+Allow: /images/
+Allow: /images/og-image.jpg
+
+# Twitterbot specific
+User-agent: Twitterbot
+Allow: /
+Allow: /images/
+Allow: /images/og-image.jpg
+
+# Facebook crawler
+User-agent: facebookexternalhit
+Allow: /
+Allow: /images/
+Allow: /images/og-image.jpg
 
 # Sitemap
 Sitemap: https://page.ricezero.fun/sitemap.xml
