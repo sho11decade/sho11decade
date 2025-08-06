@@ -1,4 +1,32 @@
-// Modern Portfolio Site - CyberAgent Style
+// Modern Portfolio Site - Performance Optimized
+// Service Worker Registration and Navigation functionality
+
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('SW registered: ', registration);
+                
+                // Update available
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New content is available, refresh to update
+                            if (confirm('新しいバージョンが利用可能です。更新しますか？')) {
+                                window.location.reload();
+                            }
+                        }
+                    });
+                });
+            })
+            .catch(registrationError => {
+                console.log('SW registration failed: ', registrationError);
+            });
+    });
+}
+
 // Navigation functionality with mobile menu support
 
 // Navigation functionality
@@ -298,23 +326,25 @@ function initParticleSystem() {
     let particles = [];
     let animationId;
     
-    // Particle settings
+    // Particle settings - Space themed
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const isTablet = /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent);
     
     const settings = {
-        density: isMobile ? 25000 : isTablet ? 20000 : 15000,
-        dotColor: '#ffffff',
-        lineColor: '#ffffff',
-        particleRadius: isMobile ? 2 : 3,
-        lineWidth: 1,
-        proximity: isMobile ? 80 : 120,
+        density: isMobile ? 30000 : isTablet ? 25000 : 20000,
+        dotColor: 'rgba(255, 255, 255, 0.8)',
+        lineColor: 'rgba(108, 92, 231, 0.3)',
+        starColor: 'rgba(255, 255, 255, 0.9)',
+        particleRadius: isMobile ? 1.5 : 2,
+        lineWidth: 0.8,
+        proximity: isMobile ? 100 : 140,
         parallax: !isMobile,
-        parallaxMultiplier: 3,
-        minSpeedX: 0.1,
-        maxSpeedX: isMobile ? 0.3 : 0.5,
-        minSpeedY: 0.1,
-        maxSpeedY: isMobile ? 0.3 : 0.5
+        parallaxMultiplier: 4,
+        minSpeedX: 0.05,
+        maxSpeedX: isMobile ? 0.2 : 0.3,
+        minSpeedY: 0.05,
+        maxSpeedY: isMobile ? 0.2 : 0.3,
+        twinkleSpeed: 0.02
     };
     
     let mouseX = 0;
@@ -322,13 +352,15 @@ function initParticleSystem() {
     let winW = window.innerWidth;
     let winH = window.innerHeight;
     
-    // Particle class
+    // Particle class - Space themed
     function Particle() {
         this.stackPos = 0;
         this.active = true;
         this.layer = Math.ceil(Math.random() * 3);
         this.parallaxOffsetX = 0;
         this.parallaxOffsetY = 0;
+        this.twinkle = Math.random() * Math.PI * 2;
+        this.isStar = Math.random() < 0.3; // 30% chance to be a twinkling star
         
         this.position = {
             x: Math.ceil(Math.random() * canvas.width),
@@ -345,20 +377,38 @@ function initParticleSystem() {
     }
     
     Particle.prototype.draw = function() {
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(
-            this.position.x + this.parallaxOffsetX, 
-            this.position.y + this.parallaxOffsetY, 
-            settings.particleRadius / 2, 
-            0, 
-            Math.PI * 2, 
-            true
-        );
-        ctx.closePath();
-        ctx.fill();
+        // Update twinkle effect
+        this.twinkle += settings.twinkleSpeed;
         
-        // Draw lines to nearby particles
+        // Draw particle with twinkling effect for stars
+        ctx.beginPath();
+        if (this.isStar) {
+            const twinkleAlpha = (Math.sin(this.twinkle) + 1) * 0.5;
+            const starSize = settings.particleRadius * (0.5 + twinkleAlpha * 0.5);
+            ctx.fillStyle = `rgba(255, 255, 255, ${0.6 + twinkleAlpha * 0.4})`;
+            
+            // Draw cross-shaped star
+            const x = this.position.x + this.parallaxOffsetX;
+            const y = this.position.y + this.parallaxOffsetY;
+            
+            ctx.fillRect(x - starSize, y - starSize/4, starSize * 2, starSize/2);
+            ctx.fillRect(x - starSize/4, y - starSize, starSize/2, starSize * 2);
+        } else {
+            ctx.fillStyle = settings.dotColor;
+            ctx.arc(
+                this.position.x + this.parallaxOffsetX, 
+                this.position.y + this.parallaxOffsetY, 
+                settings.particleRadius / 2, 
+                0, 
+                Math.PI * 2, 
+                true
+            );
+        }
+        ctx.fill();
+        ctx.closePath();
+        
+        // Draw constellation-like lines to nearby particles
+        ctx.strokeStyle = settings.lineColor;
         ctx.beginPath();
         for (let i = particles.length - 1; i > this.stackPos; i--) {
             const p2 = particles[i];
@@ -367,12 +417,15 @@ function initParticleSystem() {
             const dist = Math.sqrt((a * a) + (b * b));
             
             if (dist < settings.proximity) {
+                const opacity = 1 - (dist / settings.proximity);
+                ctx.globalAlpha = opacity * 0.5;
                 ctx.moveTo(this.position.x + this.parallaxOffsetX, this.position.y + this.parallaxOffsetY);
                 ctx.lineTo(p2.position.x + p2.parallaxOffsetX, p2.position.y + p2.parallaxOffsetY);
             }
         }
         ctx.stroke();
         ctx.closePath();
+        ctx.globalAlpha = 1; // Reset alpha
     };
     
     Particle.prototype.updatePosition = function() {
@@ -407,7 +460,9 @@ function initParticleSystem() {
         ctx.fillStyle = settings.dotColor;
         ctx.strokeStyle = settings.lineColor;
         ctx.lineWidth = settings.lineWidth;
-        ctx.globalAlpha = 0.6;
+        ctx.globalAlpha = 0.8;
+        ctx.shadowBlur = 2;
+        ctx.shadowColor = 'rgba(108, 92, 231, 0.3)';
     }
     
     function draw() {
@@ -474,10 +529,65 @@ function initParticleSystem() {
     init();
 }
 
+// Performance monitoring
+function initPerformanceMonitoring() {
+    // Measure Core Web Vitals
+    if ('web-vital' in window) {
+        import('https://unpkg.com/web-vitals@3/dist/web-vitals.js').then(({onCLS, onFID, onFCP, onLCP, onTTFB}) => {
+            onCLS(console.log);
+            onFID(console.log);
+            onFCP(console.log);
+            onLCP(console.log);
+            onTTFB(console.log);
+        });
+    }
+
+    // Log performance metrics
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            console.log('Performance Metrics:', {
+                'DOM Content Loaded': perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
+                'Load Complete': perfData.loadEventEnd - perfData.loadEventStart,
+                'Page Load Time': perfData.loadEventEnd - perfData.fetchStart,
+                'DNS Lookup': perfData.domainLookupEnd - perfData.domainLookupStart,
+                'TCP Connection': perfData.connectEnd - perfData.connectStart,
+                'First Byte': perfData.responseStart - perfData.requestStart
+            });
+        }, 0);
+    });
+}
+
+// Resource hints for better performance
+function addResourceHints() {
+    const head = document.head;
+    
+    // Preconnect to external domains
+    const preconnects = [
+        'https://fonts.googleapis.com',
+        'https://fonts.gstatic.com',
+        'https://www.googletagmanager.com'
+    ];
+    
+    preconnects.forEach(url => {
+        if (!document.querySelector(`link[href="${url}"]`)) {
+            const link = document.createElement('link');
+            link.rel = 'preconnect';
+            link.href = url;
+            if (url.includes('gstatic')) {
+                link.crossOrigin = '';
+            }
+            head.appendChild(link);
+        }
+    });
+}
+
 // Initialize particle system after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initScrollAnimations();
     initGoToTop();
     initParticleSystem();
+    initPerformanceMonitoring();
+    addResourceHints();
 });

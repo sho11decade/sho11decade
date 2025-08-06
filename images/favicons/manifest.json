@@ -3,10 +3,13 @@
 	"short_name":		"RiceZero",
 	"description":		"Pythonツール開発を中心とした技術系ポートフォリオサイト。AI技術と人の営みをテーマに、オモシロイを形にして世界を笑顔にすることを目標としています。",
 	"start_url":		"/",
+	"scope":			"/",
 	"display":			"standalone",
 	"orientation":		"any",
-	"background_color":	"#f5f5f7",
-	"theme_color":		"#007AFF",
+	"background_color":	"#0a0a0a",
+	"theme_color":		"#6c5ce7",
+	"lang":				"ja",
+	"categories":		["portfolio", "technology", "developer"],
 	"icons": [
 		{
 			"src": "./android-chrome-36x36.png",
