@@ -801,7 +801,7 @@ section[id] {
 
 .work-year {
     font-size: var(--font-size-xs);
-    color: var(--text-muted);
+    color: #666666;
 }
 
 .work-content h3 {
