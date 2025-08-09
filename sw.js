@@ -3,7 +3,6 @@ const CACHE_NAME = 'portfolio-v1.2';
 const STATIC_CACHE = 'static-v1.2';
 const DYNAMIC_CACHE = 'dynamic-v1.2';
 
-// Assets to cache on install
 const STATIC_ASSETS = [
     '/',
     '/index.html',
