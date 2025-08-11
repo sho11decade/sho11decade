@@ -1,101 +1,48 @@
-/* CyberAgent Style Portfolio - Modern Corporate Design */
+/* Optimized Portfolio CSS - Lightweight Version */
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+@media (max-width:768px){html{font-size:14px}}
+@media (max-width:480px){html{font-size:13px}}
 
-/* Base Reset and Typography */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root{
+    --primary-color:#0a0a0a;
+    --accent-color:#6c5ce7;
+    --accent-secondary:#74b9ff;
+    --nebula-purple:#a29bfe;
+    --text-primary:#000000;
+    --text-secondary:#636e72;
+    --background-space:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 25%,#16213e 50%,#0f3460 75%,#1e3c72 100%);
+    --border-color:#e0e0e0;
+    --glow-effect:0 0 20px rgba(108,92,231,0.3);
+    --font-size-xl:clamp(3rem,8vw,6rem);
+    --font-size-lg:clamp(2rem,5vw,3.5rem);
+    --font-size-md:clamp(1.25rem,3vw,2rem);
+    --spacing-sm:1rem;
+    --spacing-md:2rem;
+    --spacing-lg:4rem;
+    --spacing-xl:6rem;
+    --spacing-xxl:8rem;
+    --container-max-width:1200px;
+    --border-radius:8px;
+    --transition-medium:0.3s ease;
 }
 
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
+body{
+    font-family:"Google Sans Code",monospace;
+    background-color:#fff;
+    color:var(--text-primary);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeSpeed;
+    contain:layout style;
+    overflow-x:hidden;
 }
 
-@media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    html {
-        font-size: 13px;
-    }
-}
-
-:root {
-    /* Space-Inspired Color Palette */
-    --primary-color: #0a0a0a;
-    --secondary-color: #1a1a2e;
-    --accent-color: #6c5ce7;
-    --accent-secondary: #74b9ff;
-    --nebula-purple: #a29bfe;
-    --cosmic-blue: #0984e3;
-    --star-white: #ffffff;
-    --space-gray: #2d3436;
-    --text-primary: #000000;
-    --text-secondary: #636e72;
-    --text-muted: #b2bec3;
-    --background-primary: #ffffff;
-    --background-secondary: #f8f9fa;
-    --background-space: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1e3c72 100%);
-    --border-color: #e0e0e0;
-    --hover-color: #f5f5f5;
-    --glow-effect: 0 0 20px rgba(108, 92, 231, 0.3);
-
-    /* Typography Scale */
-    --font-size-xl: clamp(3rem, 8vw, 6rem);
-    --font-size-lg: clamp(2rem, 5vw, 3.5rem);
-    --font-size-md: clamp(1.25rem, 3vw, 2rem);
-    --font-size-base: 1rem;
-    --font-size-sm: 0.875rem;
-    --font-size-xs: 0.75rem;
-
-    /* Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 4rem;
-    --spacing-xl: 6rem;
-    --spacing-xxl: 8rem;
-
-    /* Layout */
-    --container-max-width: 1200px;
-    --grid-gap: 2rem;
-    --border-radius: 8px;
-    --border-radius-lg: 16px;
-
-    /* Animations */
-    --transition-fast: 0.2s ease;
-    --transition-medium: 0.3s ease;
-    --transition-slow: 0.5s ease;
-}
-
-body {
-    font-family: "Google Sans Code", monospace;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    background-color: var(--background-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    font-size: var(--font-size-base);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* Performance optimizations */
-    text-rendering: optimizeSpeed;
-    contain: layout style;
-    will-change: auto;
-    overflow-x: hidden;
-}
-
-/* Container System */
-.container {
-    max-width: var(--container-max-width);
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-    width: 100%;
+.container{
+    max-width:var(--container-max-width);
+    margin:0 auto;
+    padding:0 var(--spacing-md);
+    width:100%;
 }
 
 @media (max-width: 1024px) {

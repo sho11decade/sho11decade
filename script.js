@@ -1,81 +1,27 @@
-// Modern Portfolio Site - Performance Optimized
-// Service Worker Registration and Navigation functionality
-
-// Service Worker Registration
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+// Lightweight Portfolio Script
+if('serviceWorker' in navigator){
+    window.addEventListener('load',()=>{
         navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-                
-                // Update available
-                registration.addEventListener('updatefound', () => {
-                    const newWorker = registration.installing;
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                            // New content is available, refresh to update
-                            if (confirm('新しいバージョンが利用可能です。更新しますか？')) {
-                                window.location.reload();
-                            }
-                        }
-                    });
-                });
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
-            });
+            .then(r=>console.log('SW registered'))
+            .catch(e=>console.log('SW failed'));
     });
 }
 
-// Navigation functionality with mobile menu support
-
-// Navigation functionality
-function initNavigation() {
-    const navToggle = document.querySelector('.mobile-menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbar = document.querySelector('.navbar');
-    const body = document.body;
-
-    // Mobile menu toggle
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function(e) {
+function initNavigation(){
+    const toggle=document.querySelector('.mobile-menu-toggle');
+    const menu=document.querySelector('.nav-menu');
+    const body=document.body;
+    
+    if(toggle&&menu){
+        toggle.addEventListener('click',e=>{
             e.preventDefault();
-            e.stopPropagation();
-            
-            const isActive = navMenu.classList.contains('active');
-            
-            if (isActive) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
+            const active=menu.classList.contains('active');
+            menu.classList.toggle('active');
+            toggle.classList.toggle('active');
+            body.classList.toggle('nav-open');
+            toggle.setAttribute('aria-expanded',!active);
         });
     }
-
-    function openMenu() {
-        navMenu.classList.add('active');
-        navToggle.classList.add('active');
-        body.classList.add('nav-open');
-        navToggle.setAttribute('aria-expanded', 'true');
-        navToggle.setAttribute('aria-label', 'メニューを閉じる');
-        
-        // Focus trap for accessibility
-        const firstLink = navMenu.querySelector('.nav-link');
-        if (firstLink) {
-            setTimeout(() => firstLink.focus(), 100);
-        }
-    }
-
-    function closeMenu() {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-        body.classList.remove('nav-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'メニューを開く');
-    }
-
-    // Close menu when clicking on navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             closeMenu();
