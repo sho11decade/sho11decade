@@ -59,17 +59,7 @@
 <div align="center">
 
 [![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ricezero21)
-[![Portfolio](https://img.shields.io/badge/-Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://page.ricezero.fun/)
+[![Portfolio](https://img.shields.io/badge/-Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ricezero.fun/)
 [![Email](https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@ricezero.fun)
 
-</div>
-
----
-
-<div align="center">
-  
-  ### 💫 "Innovation distinguishes between a leader and a follower" - Steve Jobs
-  
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
-  
 </div>
