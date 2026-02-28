@@ -1,19 +1,37 @@
 <div align="center">
-  
-  <!-- Header with animated typing effect -->
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&pause=1000&color=00D9FF&center=true&vCenter=true&width=600&lines=Hello+World!+I'm+RiceZero+%F0%9F%91%8B;Full+Stack+Developer+%F0%9F%92%BB;AI+%26+Technology+Enthusiast+%F0%9F%A4%96;Building+the+Future+%F0%9F%9A%80" alt="Typing SVG" />
-  
-  <!-- Profile Views and Followers -->
-  <p>
-    <a href="https://github.com/sho11decade">
-      <img src="https://img.shields.io/github/followers/sho11decade?label=Followers&style=for-the-badge&color=blue" alt="Followers" />
-    </a>
-    <a href="https://github.com/sho11decade">
-      <img src="https://img.shields.io/github/stars/sho11decade?label=Stars&style=for-the-badge&color=yellow" alt="Stars" />
-    </a>
-  </p>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,50:00D9FF,100:7B2FBE&height=200&section=header&text=Hey%2C%20I'm%20RiceZero%20👋&fontSize=48&fontColor=ffffff&fontAlignY=38&desc=Full%20Stack%20Developer%20%7C%20AI%20Enthusiast%20%7C%20Builder&descAlignY=58&descSize=18&descColor=aaaaaa&animation=fadeIn" />
+
+<br/>
+
+<br/><br/>
+
+<a href="https://github.com/sho11decade">
+  <img src="https://img.shields.io/github/followers/sho11decade?label=Followers&style=flat-square&color=00D9FF&labelColor=0D1117&logo=github&logoColor=white" />
+</a>
+&nbsp;
+<a href="https://github.com/sho11decade?tab=stars">
+  <img src="https://img.shields.io/github/stars/sho11decade?label=Stars&style=flat-square&color=FFD700&labelColor=0D1117&logo=github&logoColor=white" />
+</a>
+&nbsp;
+<img src="https://komarev.com/ghpvc/?username=sho11decade&style=flat-square&color=7B2FBE&label=Profile+Views" />
 
 </div>
+
+---
+
+## 🧑‍💻 About Me
+
+```ts
+const RiceZero = {
+  name:     "RiceZero",
+  location: "Japan 🇯🇵",
+  focus:    ["Full Stack Dev", "AI Integration", "Web Products"],
+  learning: ["LLM Engineering", "Cloud Architecture"],
+  contact:  "info@ricezero.fun",
+  portfolio: "https://ricezero.fun",
+};
+```
 
 ---
 
@@ -21,35 +39,71 @@
 
 <div align="center">
 
-### Languages
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Python](https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+### 💬 Languages
 
-![Git](https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![VS Code](https://img.shields.io/badge/-VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+<img src="https://skillicons.dev/icons?i=js,ts,python,html,css&theme=dark" />
+
+### 🚀 Frameworks & Tools
+
+<img src="https://skillicons.dev/icons?i=react,nextjs,nodejs,fastapi,tailwind&theme=dark" />
+
+### ☁️ Cloud & DevOps
+
+<img src="https://skillicons.dev/icons?i=git,github,vercel,vscode,docker&theme=dark" />
+
 </div>
 
 ---
 
-
-## 📈 Activity Graph
+## 📊 GitHub Stats
 
 <div align="center">
-  
-  ![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=sho11decade&theme=tokyo-night&bg_color=0D1117&color=00D9FF&line=00D9FF&point=FFFFFF)
-  
+
+
+<br/><br/>
+
+<a href="https://git.io/streak-stats">
+  <img src="https://streak-stats.demolab.com?user=sho11decade&theme=tokyonight-duo&background=0D1117&border=21262D&ring=00D9FF&fire=7B2FBE&currStreakLabel=00D9FF&sideLabels=00D9FF&dates=666666" />
+</a>
+
 </div>
 
 ---
 
-## 🤝 Connect with Me
+## 📈 Contribution Graph
 
 <div align="center">
 
-[![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ricezero21)
-[![Portfolio](https://img.shields.io/badge/-Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ricezero.fun/)
-[![Email](https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:info@ricezero.fun)
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=sho11decade&theme=tokyo-night&bg_color=0D1117&color=00D9FF&line=7B2FBE&point=ffffff&area=true&area_color=00D9FF&hide_border=false" />
+
+</div>
+
+---
+
+## 🔗 Connect with Me
+
+<div align="center">
+
+<a href="https://twitter.com/ricezero21">
+  <img src="https://img.shields.io/badge/Twitter-@ricezero21-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white&labelColor=0D1117" />
+</a>
+&nbsp;
+<a href="https://ricezero.fun/">
+  <img src="https://img.shields.io/badge/Portfolio-ricezero.fun-00D9FF?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0D1117" />
+</a>
+&nbsp;
+<a href="mailto:hello@ricezero.fun">
+  <img src="https://img.shields.io/badge/Email-hello@ricezero.fun-EA4335?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0D1117" />
+</a>
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7B2FBE,50:00D9FF,100:0D1117&height=120&section=footer&reversal=false" />
+
+<sub>⭐ If you find my work interesting, consider giving a star!</sub>
 
 </div>
